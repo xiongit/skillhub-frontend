@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { User as UserIcon, Mail, Phone, Lock, ArrowRight } from 'lucide-react';
+import { User as UserIcon, Mail, Phone, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuthStore } from '../../../store/useAuthStore';
 
 export default function StudentRegisterPage() {
@@ -13,6 +13,7 @@ export default function StudentRegisterPage() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ export default function StudentRegisterPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Tanvir Hossain"
-                className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500"
+                className="w-full pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500 focus:bg-white transition-colors"
               />
             </div>
           </div>
@@ -68,7 +69,7 @@ export default function StudentRegisterPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="tanvir@example.com"
-                className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500"
+                className="w-full pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500 focus:bg-white transition-colors"
               />
             </div>
           </div>
@@ -83,7 +84,7 @@ export default function StudentRegisterPage() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+880 1712-345678"
-                className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500"
+                className="w-full pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500 focus:bg-white transition-colors"
               />
             </div>
           </div>
@@ -93,13 +94,21 @@ export default function StudentRegisterPage() {
             <div className="relative">
               <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Minimum 8 characters"
-                className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500"
+                className="w-full pl-10 pr-10 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-primary-500 focus:bg-white transition-colors"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none p-1"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
             </div>
           </div>
 

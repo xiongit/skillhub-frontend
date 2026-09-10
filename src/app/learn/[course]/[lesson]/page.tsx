@@ -761,20 +761,6 @@ export default function CourseLearningPage() {
                     : 'In this masterclass lesson, we explore how React 19 and Next.js 15 Server Components compile down to lightweight payloads without unnecessary hydration bundles.'}
                 </p>
 
-                <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-                  <span className="text-xs font-semibold text-slate-300 block">Lesson Resources</span>
-                  <div className="flex items-center space-x-3 text-xs">
-                    <a
-                      href="https://github.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-primary-400 hover:underline flex items-center"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5 mr-1" />
-                      Download GitHub Source Code
-                    </a>
-                  </div>
-                </div>
               </div>
             )}
 
